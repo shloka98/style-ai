@@ -1,10 +1,10 @@
 import streamlit as st
-import openai
 import os
 import tempfile
 from PIL import Image
+from openai import OpenAI
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+client = OpenAI()
 
 st.set_page_config(page_title="AI Wardrobe Assistant", layout="wide")
 st.title("👗 AI Wardrobe Assistant")
@@ -46,7 +46,7 @@ if submitted:
             for i, path in enumerate(saved_paths):
                 prompt += f"Item {i+1}: [Image not shown]\n"
 
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4",
                 messages=[
                     {"role": "system", "content": "You are a fashion stylist."},
@@ -54,7 +54,7 @@ if submitted:
                 ]
             )
 
-            output = response['choices'][0]['message']['content']
+            output = response.choices[0].message.content
 
             st.subheader("🧾 AI Styling Recommendations")
             st.markdown(output)

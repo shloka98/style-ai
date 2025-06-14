@@ -1,3 +1,3 @@
 # AI Wardrobe Assistant
 
-Upload your wardrobe and let GPT-4 give you styling and shopping recommendations.
+Streamlit app powered by GPT-4 for outfit styling and smart shopping.
