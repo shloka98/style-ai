@@ -47,7 +47,7 @@ if submitted:
                 prompt += f"Item {i+1}: [Image not shown]\n"
 
             response = client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "You are a fashion stylist."},
                     {"role": "user", "content": prompt}
